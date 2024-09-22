@@ -1,4 +1,4 @@
-let colors = [ "red", "blue", "green", "yellow", "orange", "purple" ];
+let colors = ["red", "blue", "green", "yellow", "orange", "purple"];
 var answer = new Array();
 var guesses = new Array(); //may not need this
 var numGuesses = 0; //max of 10 guesses
@@ -11,10 +11,10 @@ var guessButton = document.getElementById('guess');
 var newGameButton = document.getElementById('newGame');
 
 // Currently working
-function newGame(){
+function newGame() {
     //create answer combination
     var i = 0;
-    while(i < 4){
+    while (i < 4) {
         answer[i] = colors[Math.floor(Math.random() * colors.length)];
         i++;
     }
@@ -24,7 +24,7 @@ function newGame(){
     c2.style.backgroundColor = colors[0];
     c3.style.backgroundColor = colors[0];
     c4.style.backgroundColor = colors[0];
-    
+
     //clear guesses array
     guesses = [];
 
@@ -47,68 +47,83 @@ c4.addEventListener('click', changeColor);
 
 
 // Currently working
-function changeColor(){
+function changeColor() {
     // 'this' refers to the box that was clicked
     var boxColor = this.style.backgroundColor;
     var colorIndex = colors.indexOf(boxColor);
 
-    if(colorIndex != 5){
+    if (colorIndex != 5) {
         this.style.backgroundColor = colors[colorIndex + 1];
     }
-    else{
+    else {
         this.style.backgroundColor = colors[0];
     }
 }
 
 
 // Issues are occuring
-function guess(){
+function guess() {
     var guess = [c1.style.backgroundColor, c2.style.backgroundColor, c3.style.backgroundColor, c4.style.backgroundColor];
     guesses[numGuesses] = guess;
     numGuesses++;
-    
-    var copyAnswer = answer;
+
+    var guessed = new Array();  //array to hold used colors
 
     var correct = 0;
     var misplaced = 0;
     var incorrect = 4;
 
-    //check if guess is correct
-    if(guess == answer){
-        alert("You win!");
-        newGameButton.style.display = 'flex';
-        guessButton.style.display = 'none';
-    }
-    else{
+    alert('Guess: ' + guess + '\nAnswer: ' + answer);
+    
 
-        //collects all correct guesses
-        for(var i = 0; i < 4; i++){
-            if(guess[i] == copyAnswer[i]){
-                copyAnswer[i] = '';
-                correct++;
-                incorrect--;
-            }
+    //collects all correct guesses
+    for (var i = 0; i < 4; i++) {
+        if (guess[i] == answer[i]) {
+            guessed[i] = guess[i];
+            correct++;
+            incorrect--;
         }
+    }
 
-        //checc for misplaced
-        for(var i = 0; i < 4; i++){
-            if(copyAnswer.includes(guess[i])){
-                copyAnswer[copyAnswer.indexOf(guess[i])] = '';
+    //check for misplaced
+    for (var i = 0; i < 4; i++) {
+        //check to see if value has already been checked
+        if (!(guessed[i] == guess[i])) {
+            //get current color count in answer
+            var colorCount = answer.filter(function (value) {
+                return value === guess[i];
+            })
+
+            //get current color count in guessed
+            var guessedCount = guessed.filter(function (value) {
+                return value === guess[i];
+            })
+
+            //check if color is in answer and puts in guessed array to avoid duplicates
+            if (colorCount.length > guessedCount.length) {
+                guessed[i] = guess[i];
                 misplaced++;
                 incorrect--;
             }
         }
+    }
 
-        alert("Correct: " + correct + " Misplaced: " + misplaced + " Incorrect: " + incorrect);
+    alert("Correct: " + correct + " Misplaced: " + misplaced + " Incorrect: " + incorrect);
 
-        //reset copyAnswer
-        for(var i = 0; i < 4; i++){
-            copyAnswer[i] = answer[i];
-        }
+    //reset copyAnswer
+    for (var i = 0; i < 4; i++) {
+        guessed[i] = '';
+    }
+
+    //check if guess is correct
+    if (correct == 4) {
+        alert("You win!");
+        newGameButton.style.display = 'flex';
+        guessButton.style.display = 'none';
     }
 
     //check if max number of guesses has been reached
-    if(numGuesses == 10){
+    if (numGuesses == 10) {
         alert("You lose! The correct answer was: " + answer);
         newGameButton.style.display = 'flex';
         guessButton.style.display = 'none';
