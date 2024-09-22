@@ -22,7 +22,6 @@
     margin: 10px;
     padding: 30px;
     min-width: 70%;
-    height: 600px;
 }
 
 .sec-piece2 {
@@ -35,7 +34,7 @@
     padding: 30px;
     min-width: 30%;
     max-width: 40%;
-    height: 600px;
+    height: 1500px;
 }
 
 .colorChoice {
@@ -61,3 +60,23 @@
     align-items: center;
     flex-direction: column;
 }
+
+.guessBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    width: 80%;
+}
+
+
+.results{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+    margin: 35px;
+}
+

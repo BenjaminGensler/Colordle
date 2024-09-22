@@ -6,17 +6,18 @@ var numGuesses = 0; //max of 10 guesses
 //values to be used for the specific box
 var cSet = 1;
 var parentNode = document.getElementById('colorSet' + cSet);
+var resultNode = document.getElementById('result' + cSet);
 
-//The following 4 lines were replaced with the 4 lines below it (Seems tob e working)
-// var c1 = document.getElementById('c1');
-// var c2 = document.getElementById('c2');
-// var c3 = document.getElementById('c3');
-// var c4 = document.getElementById('c4');
-
+//The below values reference the color buttons based on the parentNode
 var c1 = parentNode.querySelector('#c1');
 var c2 = parentNode.querySelector('#c2');
 var c3 = parentNode.querySelector('#c3');
 var c4 = parentNode.querySelector('#c4');
+
+//results value (r1 = correct, r2 = misplaced, r3 = incorrect)
+var r1 = resultNode.querySelector('#r1');
+var r2 = resultNode.querySelector('#r2');
+var r3 = resultNode.querySelector('#r3');
 
 
 var guessButton = document.getElementById('guess');
@@ -148,25 +149,10 @@ function guess() {
     }
 
 
-
-    // //adds results of guess to 'Guesses' table
-    // var parentNode = document.getElementById('colorSet');
-    // var clone = parentNode.cloneNode(true); //copys the parentNode and all of its children
-
-    // for(var i = 0; i < 4; i++) {
-    //     var colorID = 'c' + i;
-    //     var button = document.getElementById(colorID);
-    //     var div = document.createElement('div');
-    //     div.innerHTML = button.innerHTML;
-
-    //     //alter id to avoid alterations
-    //     div.id = 'd' + i;
-    //     //copy color over
-    //     div.style.backgroundColor = button.style.backgroundColor;
-    //     guessButton.parentNode.replaceChild(div, button);
-
-    // }
-    // alert("Testing");
+    //display results
+    r1.textContent = correct;
+    r2.textContent = misplaced;
+    r3.textContent = incorrect;
 
     cSet++;
     //enable the next set of buttons for next cSet
@@ -192,4 +178,10 @@ function guess() {
     c2.disabled = false;
     c3.disabled = false;
     c4.disabled = false;
+
+    //grab the next set of results
+    resultNode = document.getElementById('result' + cSet);
+    r1 = resultNode.querySelector('#r1');
+    r2 = resultNode.querySelector('#r2');
+    r3 = resultNode.querySelector('#r3');
 } 
