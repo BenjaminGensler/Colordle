@@ -1,0 +1,63 @@
+.primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+
+}
+.intro {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    max-width: 1200px;
+}
+.sec-piece {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    padding: 30px;
+    min-width: 70%;
+    height: 600px;
+}
+
+.sec-piece2 {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    background-color:rgb(132, 135, 137);
+    margin: 10px;
+    padding: 30px;
+    min-width: 30%;
+    max-width: 40%;
+    height: 600px;
+}
+
+.colorChoice {
+        width: 70px;
+        height: 70px;
+       color: grey;
+        margin: 10px;
+        border: none;
+}
+
+.newGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    padding: 30px;
+}
+
+.guess {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
