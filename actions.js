@@ -60,8 +60,8 @@ function changeColor(){
     }
 }
 
-//var copyAnswer = answer;
 
+// Issues are occuring
 function guess(){
     var guess = [c1.style.backgroundColor, c2.style.backgroundColor, c3.style.backgroundColor, c4.style.backgroundColor];
     guesses[numGuesses] = guess;
