@@ -3,10 +3,22 @@ var answer = new Array();
 var guesses = new Array(); //may not need this
 var numGuesses = 0; //max of 10 guesses
 
-var c1 = document.getElementById('c1');
-var c2 = document.getElementById('c2');
-var c3 = document.getElementById('c3');
-var c4 = document.getElementById('c4');
+//values to be used for the specific box
+var cSet = 1;
+var parentNode = document.getElementById('colorSet' + cSet);
+
+//The following 4 lines were replaced with the 4 lines below it (Seems tob e working)
+// var c1 = document.getElementById('c1');
+// var c2 = document.getElementById('c2');
+// var c3 = document.getElementById('c3');
+// var c4 = document.getElementById('c4');
+
+var c1 = parentNode.querySelector('#c1');
+var c2 = parentNode.querySelector('#c2');
+var c3 = parentNode.querySelector('#c3');
+var c4 = parentNode.querySelector('#c4');
+
+
 var guessButton = document.getElementById('guess');
 var newGameButton = document.getElementById('newGame');
 
@@ -63,6 +75,12 @@ function changeColor() {
 
 // Issues are occuring
 function guess() {
+    //attempting to disable the buttons after guess
+    c1.disabled = true;
+    c2.disabled = true;
+    c3.disabled = true;
+    c4.disabled = true;
+
     var guess = [c1.style.backgroundColor, c2.style.backgroundColor, c3.style.backgroundColor, c4.style.backgroundColor];
     guesses[numGuesses] = guess;
     numGuesses++;
@@ -73,8 +91,8 @@ function guess() {
     var misplaced = 0;
     var incorrect = 4;
 
-    alert('Guess: ' + guess + '\nAnswer: ' + answer);
-    
+    // alert('Guess: ' + guess + '\nAnswer: ' + answer);
+
 
     //collects all correct guesses
     for (var i = 0; i < 4; i++) {
@@ -128,4 +146,50 @@ function guess() {
         newGameButton.style.display = 'flex';
         guessButton.style.display = 'none';
     }
-}
+
+
+
+    // //adds results of guess to 'Guesses' table
+    // var parentNode = document.getElementById('colorSet');
+    // var clone = parentNode.cloneNode(true); //copys the parentNode and all of its children
+
+    // for(var i = 0; i < 4; i++) {
+    //     var colorID = 'c' + i;
+    //     var button = document.getElementById(colorID);
+    //     var div = document.createElement('div');
+    //     div.innerHTML = button.innerHTML;
+
+    //     //alter id to avoid alterations
+    //     div.id = 'd' + i;
+    //     //copy color over
+    //     div.style.backgroundColor = button.style.backgroundColor;
+    //     guessButton.parentNode.replaceChild(div, button);
+
+    // }
+    // alert("Testing");
+
+    cSet++;
+    //enable the next set of buttons for next cSet
+    parentNode = document.getElementById('colorSet' + cSet);
+    c1 = parentNode.querySelector('#c1');
+    c2 = parentNode.querySelector('#c2');
+    c3 = parentNode.querySelector('#c3');
+    c4 = parentNode.querySelector('#c4');
+
+    //set color boxes as colors[0] ('red')
+    c1.style.backgroundColor = colors[0];
+    c2.style.backgroundColor = colors[0];
+    c3.style.backgroundColor = colors[0];
+    c4.style.backgroundColor = colors[0];
+
+    //used to check if clicked I guess...
+    c1.addEventListener('click', changeColor);
+    c2.addEventListener('click', changeColor);
+    c3.addEventListener('click', changeColor);
+    c4.addEventListener('click', changeColor);
+
+    c1.disabled = false;
+    c2.disabled = false;
+    c3.disabled = false;
+    c4.disabled = false;
+} 
