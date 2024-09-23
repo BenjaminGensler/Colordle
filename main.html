@@ -1,147 +1,151 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="stylesheet.css">
-    </head>
 
-    <body>
-        <section class="primary">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
 
-            <h2>Colordle</h2>
-            <p>Find the correct combinations</p>
-            <div class="intro">
-                <div class="sec-piece">
-                    <div class = "guessBox" id = "colorSet1">
-                        <button class = "colorChoice" id = "c1"></button>
-                        <button class = "colorChoice" id = "c2"></button>
-                        <button class = "colorChoice" id = "c3"></button>
-                        <button class = "colorChoice" id = "c4"></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet2">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet3">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet4">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet5">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet6">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet7">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet8">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet9">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-                    <div class = "guessBox" id = "colorSet10">
-                        <button class = "colorChoice" id = "c1" disabled></button>
-                        <button class = "colorChoice" id = "c2" disabled></button>
-                        <button class = "colorChoice" id = "c3" disabled></button>
-                        <button class = "colorChoice" id = "c4" disabled></button>
-                    </div>
-        
-                    <button class = "newGame" id = "newGame" onClick = 'newGame()'>
-                        <p>New Game</p>
-                    </button>
-                    <button class = "guess" id = "guess" onClick = 'guess()'>
-                        <p>Guess</p>
-                    </button>
+<body>
+    <nav>
+        <ul class="tabs">
+            <li><p>Colordle</p></li>
+            <li><img class = "logo" src = "logo.png"></li>
+        </ul>
+    </nav>
+    <section class="primary">
+        <div class="intro">
+            <div class="sec-piece">
+                <div class="guessBox" id="colorSet1">
+                    <button class="colorChoice" id="c1"></button>
+                    <button class="colorChoice" id="c2"></button>
+                    <button class="colorChoice" id="c3"></button>
+                    <button class="colorChoice" id="c4"></button>
                 </div>
-        
-                <div class="sec-piece2">
-                    <h2><br />Guesses</h2>
-                    <h3>Correct  Misplaced  Wrong</h3>
-                    <div class = "results" id = "result1">
-                        <p class = "value1" id = "r1">0</p>
-                        <p class = "value2" id = "r2">0</p>
-                        <p class = "value3" id = "r3">0</p>
-                    </div>
-                    <div class = "results" id = "result2">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result3">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result4">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result5">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result6">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result7">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result8">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result9">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-                    <div class = "results" id = "result10">
-                        <p class = "value1" id = "r1"></p>
-                        <p class = "value2" id = "r2"></p>
-                        <p class = "value3" id = "r3"></p>
-                    </div>
-
+                <div class="guessBox" id="colorSet2">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
                 </div>
+                <div class="guessBox" id="colorSet3">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet4">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet5">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet6">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet7">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet8">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet9">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+                <div class="guessBox" id="colorSet10">
+                    <button class="colorChoice" id="c1" disabled></button>
+                    <button class="colorChoice" id="c2" disabled></button>
+                    <button class="colorChoice" id="c3" disabled></button>
+                    <button class="colorChoice" id="c4" disabled></button>
+                </div>
+
+                <button class="newGame" id="newGame" onClick='newGame()'>
+                    <p>New Game</p>
+                </button>
+                <button class="guess" id="guess" onClick='guess()'>
+                    <p>Guess</p>
+                </button>
             </div>
-        </section>
-        <script src="actions.js"></script>
-    </body>
-</html>
 
+            <div class="sec-piece2">
+                <h2><br />Guesses</h2>
+                <h3>Correct Misplaced Wrong</h3>
+                <div class="results" id="result1">
+                    <p class="value1" id="r1">0</p>
+                    <p class="value2" id="r2">0</p>
+                    <p class="value3" id="r3">0</p>
+                </div>
+                <div class="results" id="result2">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result3">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result4">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result5">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result6">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result7">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result8">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result9">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+                <div class="results" id="result10">
+                    <p class="value1" id="r1"></p>
+                    <p class="value2" id="r2"></p>
+                    <p class="value3" id="r3"></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script src="actions.js"></script>
+</body>
+
+</html>

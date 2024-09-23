@@ -25,6 +25,49 @@ var newGameButton = document.getElementById('newGame');
 
 // Currently working
 function newGame() {
+    
+    //sets buttons back to default settings
+    while(cSet > 1){
+
+        c1.disabled = true;
+        c2.disabled = true;
+        c3.disabled = true;
+        c4.disabled = true;
+
+        c1.style.backgroundColor = 'rgb(171, 176, 179)';
+        c2.style.backgroundColor = 'rgb(171, 176, 179)';
+        c3.style.backgroundColor = 'rgb(171, 176, 179)';
+        c4.style.backgroundColor = 'rgb(171, 176, 179)';
+
+        cSet--;
+
+        alert(cSet);
+
+        parentNode = document.getElementById('colorSet' + cSet);
+        c1 = parentNode.querySelector('#c1');
+        c2 = parentNode.querySelector('#c2');
+        c3 = parentNode.querySelector('#c3');
+        c4 = parentNode.querySelector('#c4');
+
+        resultNode = document.getElementById('result' + cSet);
+        r1 = resultNode.querySelector('#r1');
+        r2 = resultNode.querySelector('#r2');
+        r3 = resultNode.querySelector('#r3');
+
+        r1.textContent = '';
+        r2.textContent = '';
+        r3.textContent = '';
+    }
+
+
+    c1.disabled = false;
+    c2.disabled = false;
+    c3.disabled = false;
+    c4.disabled = false;
+
+
+
+
     //create answer combination
     var i = 0;
     while (i < 4) {
@@ -47,7 +90,6 @@ function newGame() {
     //replace 'New Game button with 'Guess' button
     newGameButton.style.display = 'none';
     guessButton.style.display = 'flex';
-
 
     alert("New Game Started! Make your first guess!");
 }
@@ -139,10 +181,12 @@ function guess() {
         alert("You win!");
         newGameButton.style.display = 'flex';
         guessButton.style.display = 'none';
+        return; //avoids it continuing (hopefully)
+        alert("You win test!");
     }
 
     //check if max number of guesses has been reached
-    if (numGuesses == 10) {
+    if (numGuesses >= 10) {
         alert("You lose! The correct answer was: " + answer);
         newGameButton.style.display = 'flex';
         guessButton.style.display = 'none';
