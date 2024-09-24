@@ -20,7 +20,7 @@ var r2 = resultNode.querySelector('#r2');
 var r3 = resultNode.querySelector('#r3');
 
 
-var guessButton = document.getElementById('guess');
+var guessButton = document.getElementById('guess' + cSet);
 var newGameButton = document.getElementById('newGame');
 
 // Currently working
@@ -33,26 +33,27 @@ function newGame() {
         c2.disabled = true;
         c3.disabled = true;
         c4.disabled = true;
+        guessButton.disabled = true;
 
-        c1.style.backgroundColor = 'rgb(171, 176, 179)';
-        c2.style.backgroundColor = 'rgb(171, 176, 179)';
-        c3.style.backgroundColor = 'rgb(171, 176, 179)';
-        c4.style.backgroundColor = 'rgb(171, 176, 179)';
+        c1.style.backgroundColor = 'rgb(209, 217, 221)';
+        c2.style.backgroundColor = 'rgb(209, 217, 221)';
+        c3.style.backgroundColor = 'rgb(209, 217, 221)';
+        c4.style.backgroundColor = 'rgb(209, 217, 221)';
 
         cSet--;
-
-        alert(cSet);
 
         parentNode = document.getElementById('colorSet' + cSet);
         c1 = parentNode.querySelector('#c1');
         c2 = parentNode.querySelector('#c2');
         c3 = parentNode.querySelector('#c3');
         c4 = parentNode.querySelector('#c4');
+        
 
         resultNode = document.getElementById('result' + cSet);
         r1 = resultNode.querySelector('#r1');
         r2 = resultNode.querySelector('#r2');
         r3 = resultNode.querySelector('#r3');
+        guessButton = resultNode.querySelector('#guess' + cSet);
 
         r1.textContent = '';
         r2.textContent = '';
@@ -64,6 +65,7 @@ function newGame() {
     c2.disabled = false;
     c3.disabled = false;
     c4.disabled = false;
+    guessButton.disabled = false;
 
 
 
@@ -118,11 +120,14 @@ function changeColor() {
 
 // Issues are occuring
 function guess() {
-    //attempting to disable the buttons after guess
+    //disable the buttons after guess
     c1.disabled = true;
     c2.disabled = true;
     c3.disabled = true;
     c4.disabled = true;
+    guessButton.disabled = true;
+
+    guessButton.style.display = 'none';
 
     var guess = [c1.style.backgroundColor, c2.style.backgroundColor, c3.style.backgroundColor, c4.style.backgroundColor];
     guesses[numGuesses] = guess;
@@ -206,6 +211,13 @@ function guess() {
     c3 = parentNode.querySelector('#c3');
     c4 = parentNode.querySelector('#c4');
 
+    //grab the next set of results
+    resultNode = document.getElementById('result' + cSet);
+    r1 = resultNode.querySelector('#r1');
+    r2 = resultNode.querySelector('#r2');
+    r3 = resultNode.querySelector('#r3');
+    guessButton = resultNode.querySelector(`#guess${cSet}`);
+
     //set color boxes as colors[0] ('red')
     c1.style.backgroundColor = colors[0];
     c2.style.backgroundColor = colors[0];
@@ -222,10 +234,8 @@ function guess() {
     c2.disabled = false;
     c3.disabled = false;
     c4.disabled = false;
+    guessButton.disabled = false;
 
-    //grab the next set of results
-    resultNode = document.getElementById('result' + cSet);
-    r1 = resultNode.querySelector('#r1');
-    r2 = resultNode.querySelector('#r2');
-    r3 = resultNode.querySelector('#r3');
+    //make next guessButton display
+    guessButton.style.display = 'flex';
 } 
