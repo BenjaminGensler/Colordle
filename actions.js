@@ -26,7 +26,7 @@ var newGameButton = document.getElementById('newGame');
 
 //option in settings to remove duplicates
 function easyMode() {
-    alert("Easy Mode Activated");
+    alert("Easy Mode Activated: No Duplicate Colors");
     if (easy == false) {
         easy = true;
     }
@@ -77,7 +77,6 @@ function createCombo() {
     }
     //avoid duplicates
     else {
-        alert("No Duplicates)");
         while (i < 4) {
             var randomColor = colors[Math.floor(Math.random() * colors.length)];
             if (!(answer.includes(randomColor))) {
@@ -86,9 +85,6 @@ function createCombo() {
             }
         }
     }
-
-    alert(answer);
-
 }
 
 function clearGuessResults() {
