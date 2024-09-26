@@ -2,6 +2,7 @@ let colors = ["red", "blue", "green", "yellow", "orange", "purple"];
 var answer = new Array();
 var guesses = new Array(); //may not need this
 var numGuesses = 0; //max of 10 guesses
+var easy = false;
 
 //values to be used for the specific box
 var cSet = 1;
@@ -23,6 +24,16 @@ var r3 = resultNode.querySelector('#r3');
 var guessButton = document.getElementById('guess' + cSet);
 var newGameButton = document.getElementById('newGame');
 
+//option in settings to remove duplicates
+function easyMode() {
+    alert("Easy Mode Activated");
+    if (easy == false) {
+        easy = true;
+    }
+    else {
+        easy = false;
+    }
+}
 
 function disableButtons() {
     c1.disabled = true;
@@ -42,17 +53,42 @@ function enableButtons() {
 
 function changeSets() {
     parentNode = document.getElementById('colorSet' + cSet);
-        c1 = parentNode.querySelector('#c1');
-        c2 = parentNode.querySelector('#c2');
-        c3 = parentNode.querySelector('#c3');
-        c4 = parentNode.querySelector('#c4');
-        
+    c1 = parentNode.querySelector('#c1');
+    c2 = parentNode.querySelector('#c2');
+    c3 = parentNode.querySelector('#c3');
+    c4 = parentNode.querySelector('#c4');
 
-        resultNode = document.getElementById('result' + cSet);
-        r1 = resultNode.querySelector('#r1');
-        r2 = resultNode.querySelector('#r2');
-        r3 = resultNode.querySelector('#r3');
-        guessButton = resultNode.querySelector('#guess' + cSet);
+
+    resultNode = document.getElementById('result' + cSet);
+    r1 = resultNode.querySelector('#r1');
+    r2 = resultNode.querySelector('#r2');
+    r3 = resultNode.querySelector('#r3');
+    guessButton = resultNode.querySelector('#guess' + cSet);
+}
+
+function createCombo() {
+    var i = 0;
+    if (easy == false) {
+        //create answer combination
+        while (i < 4) {
+            answer[i] = colors[Math.floor(Math.random() * colors.length)];
+            i++;
+        }
+    }
+    //avoid duplicates
+    else {
+        alert("No Duplicates)");
+        while (i < 4) {
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            if (!(answer.includes(randomColor))) {
+                answer[i] = randomColor;
+                i++;
+            }
+        }
+    }
+
+    alert(answer);
+
 }
 
 function clearGuessResults() {
@@ -64,9 +100,9 @@ function clearGuessResults() {
 
 // Currently working
 function newGame() {
-    
+
     //sets buttons back to default settings
-    while(cSet > 1){
+    while (cSet > 1) {
 
         disableButtons();
 
@@ -85,15 +121,11 @@ function newGame() {
 
     enableButtons();
 
+    //create new answer combination
+    createCombo();
 
 
 
-    //create answer combination
-    var i = 0;
-    while (i < 4) {
-        answer[i] = colors[Math.floor(Math.random() * colors.length)];
-        i++;
-    }
 
     //set color boxes as colors[0] ('red')
     c1.style.backgroundColor = colors[0];

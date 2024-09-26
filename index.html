@@ -12,8 +12,10 @@
 <body>
     <nav>
         <ul class="tabs">
-            <li><p>Colordle</p></li>
-            <li><img class = "logo" src = "logo.png"></li>
+            <li>
+                <p>Colordle</p>
+            </li>
+            <li><img class="logo" src="logo.png"></li>
         </ul>
     </nav>
     <section class="primary">
@@ -29,21 +31,24 @@
                     <p> - Click on the colors to change the color</p>
                     <p> - Create a color combination and press "Guess"</p>
                     <p> - Your guess will tell you about yoru combination:</p>
-                    <p> - <img class = "type" src = "correctType.png"> you have the <b>right</b> color in the <b>right</b> spot</p>
-                    <p> - <img class = "type" src = "misplacedType.png"> you have the <b>right</b> color in the <b>wrong</b> spot</p>
-                    <p> - <img class = "type" src = "wrongType.png"> you have the <b>wrong</b> color</p> <br>
+                    <p> - <img class="type" src="correctType.png"> you have the <b>right</b> color in the <b>right</b>
+                        spot</p>
+                    <p> - <img class="type" src="misplacedType.png"> you have the <b>right</b> color in the <b>wrong</b>
+                        spot</p>
+                    <p> - <img class="type" src="wrongType.png"> you have the <b>wrong</b> color</p> <br>
                     <p> - Keep guessing until you get the right combination</p>
 
-                    <p> **Note: <br> There can be duplicate colors. If there is a duplicate color the guess will not include it in the results.</p>
+                    <p> **Note: <br> There can be duplicate colors. If there is a duplicate color the guess will not
+                        include it in the results.</p>
                 </details>
-                
+
                 <details class="dropdown">
-                    <summary>Settings<span class="arrow"></span></summary>
-                    <ul>
-                        <li>Option 1</li>
-                        <li>Option 2</li>
-                        <li>Option 3</li>
-                    </ul>
+                    <summary>Settings *Currently Under Production*<span class="arrow"></span></summary>
+                    <p>Easy Mode</p>
+                    <label class="switch">
+                        <input type="checkbox" onchange="easyMode()">
+                        <span class="slider round"></span>
+                    </label>
                 </details>
 
             </div>
@@ -65,56 +70,56 @@
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet4">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet5">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet6">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet7">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet8">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet9">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <div class="guessBox" id="colorSet10">
                     <button class="colorChoice" id="c1" disabled></button>
                     <button class="colorChoice" id="c2" disabled></button>
                     <button class="colorChoice" id="c3" disabled></button>
                     <button class="colorChoice" id="c4" disabled></button>
-                    
+
                 </div>
                 <button class="newGame" id="newGame" onClick='newGame()'>
                     <p>New Game</p>
@@ -123,10 +128,10 @@
 
             <div class="sec-piece2">
                 <h2><br />Guesses</h2>
-                <div class = results>
-                    <img class = "type" src = "correctType.png">
-                    <img class = "type" src = "misplacedType.png">
-                    <img class = "type" src = "wrongType.png">
+                <div class=results>
+                    <img class="type" src="correctType.png">
+                    <img class="type" src="misplacedType.png">
+                    <img class="type" src="wrongType.png">
                 </div>
                 <div class="results" id="result1">
                     <p id="r1"></p>
