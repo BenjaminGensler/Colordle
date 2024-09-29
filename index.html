@@ -31,169 +31,207 @@
                     <p> - Click on the colors to change the color</p>
                     <p> - Create a color combination and press "Guess"</p>
                     <p> - Your guess will tell you about yoru combination:</p>
-                    <p> - <img class="type" src="correctType.png"> you have the <b>right</b> color in the <b>right</b>
+                    <p> <img class="type" src="correctType.png"> you have the <b>right</b> color in the <b>right</b>
                         spot</p>
-                    <p> - <img class="type" src="misplacedType.png"> you have the <b>right</b> color in the <b>wrong</b>
+                    <p> <img class="type" src="misplacedType.png"> you have the <b>right</b> color in the <b>wrong</b>
                         spot</p>
-                    <p> - <img class="type" src="wrongType.png"> you have the <b>wrong</b> color</p> <br>
+                    <p> <img class="type" src="wrongType.png"> you have the <b>wrong</b> color</p> <br>
                     <p> - Keep guessing until you get the right combination</p>
-
+                    <p> - You have 10 tries to get the right combination</p>
+                    <p> - If you don't want to always guess 4 colors you can use a white tile as a blank</p>
                     <p> **Note: <br> There can be duplicate colors. If there is a duplicate color the guess will not
                         include it in the results.</p>
                 </details>
 
                 <details class="dropdown">
-                    <summary>Settings *Currently Under Production*<span class="arrow"></span></summary>
-                    <p>Easy Mode</p>
-                    <label class="switch">
-                        <input type="checkbox" onchange="easyMode()">
-                        <span class="slider round"></span>
-                    </label>
+                    <summary><b>Settings</b><span class="arrow"></span></summary>
+                    <div class="mixer">
+                        <p>Easy Mode</p>
+                        <label class="switch">
+                            <input type="checkbox" onchange="easyMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="mixer">
+                        <p>Hard Mode</p>
+                        <label class="switch">
+                            <input type="checkbox" onchange="hardMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="mixer">
+                        <p>Color Blind</p>
+                        <label class="switch">
+                            <input type="checkbox" onchange="colorBlindMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </details>
-
-            </div>
-            <div class="sec-piece">
-                <div class="guessBox" id="colorSet1">
-                    <button class="colorChoice" id="c1"></button>
-                    <button class="colorChoice" id="c2"></button>
-                    <button class="colorChoice" id="c3"></button>
-                    <button class="colorChoice" id="c4"></button>
-                </div>
-                <div class="guessBox" id="colorSet2">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-                </div>
-                <div class="guessBox" id="colorSet3">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet4">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet5">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet6">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet7">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet8">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet9">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <div class="guessBox" id="colorSet10">
-                    <button class="colorChoice" id="c1" disabled></button>
-                    <button class="colorChoice" id="c2" disabled></button>
-                    <button class="colorChoice" id="c3" disabled></button>
-                    <button class="colorChoice" id="c4" disabled></button>
-
-                </div>
-                <button class="newGame" id="newGame" onClick='newGame()'>
-                    <p>New Game</p>
-                </button>
             </div>
 
-            <div class="sec-piece2">
-                <h2><br />Guesses</h2>
-                <div class=results>
-                    <img class="type" src="correctType.png">
-                    <img class="type" src="misplacedType.png">
-                    <img class="type" src="wrongType.png">
+            <div class=sec-piece2>
+                <div class=mixer>
+                    <div class="guessBox">
+                        <h1>Guess the combination</h1>
+                    </div>
+                    <div class="results">
+                        <img class="type" src="correctType.png">
+                        <img class="type" src="misplacedType.png">
+                        <img class="type" src="wrongType.png">
+                    </div>
                 </div>
-                <div class="results" id="result1">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess1" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet1">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result1">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess1" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result2">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess2" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet2">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result2">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess2" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result3">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess3" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet3">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result3">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess3" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result4">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess4" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet4">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result4">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess4" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result5">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess5" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet5">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result5">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess5" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result6">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess6" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet6">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result6">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess6" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result7">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess7" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet7">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result7">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess7" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result8">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess8" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet8">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result8">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess8" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result9">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess9" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet9">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result9">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess9" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-                <div class="results" id="result10">
-                    <p id="r1"></p>
-                    <p id="r2"></p>
-                    <p id="r3"></p>
-                    <button class="guess" id="guess10" onClick='guess()'>Guess</button>
+                <div class=mixer>
+                    <div class="guessBox" id="colorSet10">
+                        <button class="colorChoice" id="c1"></button>
+                        <button class="colorChoice" id="c2"></button>
+                        <button class="colorChoice" id="c3"></button>
+                        <button class="colorChoice" id="c4"></button>
+                    </div>
+                    <div class="results" id="result10">
+                        <p id="r1"></p>
+                        <p id="r2"></p>
+                        <p id="r3"></p>
+                        <button class="guess" id="guess10" onClick='guess()'>Guess</button>
+                    </div>
                 </div>
-
+                <div class=mixer>
+                    <div class="guessBox">
+                        <button class="newGame" id="newGame" onClick='newGame()'>
+                            <p>New Game</p>
+                        </button>
+                    </div>
+                    <div class="results">
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>

@@ -1,8 +1,10 @@
-let colors = ["red", "blue", "green", "yellow", "orange", "purple"];
+let colors = ["white", "red", "blue", "green", "yellow", "orange", "purple"];
 var answer = new Array();
 var guesses = new Array(); //may not need this
 var numGuesses = 0; //max of 10 guesses
 var easy = false;
+var hard = false;
+var blind = false;
 
 //values to be used for the specific box
 var cSet = 1;
@@ -35,6 +37,47 @@ function easyMode() {
     }
 }
 
+//option in settings to add more colors and limit view of guesses
+function hardMode() {
+    //add 2 more colors
+    alert("Hard Mode Activated: 8 colors & limited view");
+    if (hard == false) {
+        hard = true;
+    }
+    else {
+        hard = false;
+    }
+    setColor();
+}   
+
+//option in settings to change colors for color blind
+function colorBlindMode() {
+    alert("Color Blind Mode Activated: Colors have been changed");
+    if (blind == false) {
+        blind = true;
+    }
+    else {
+        blind = false;
+    }
+    setColor();
+}
+
+function setColor(){
+    if(hard == true && blind == true){
+        colors = ["white", "blue", "yellow", "black", "orange", "pink", "purple", "magenta", "brown"];
+    }
+    else if(hard == true && blind == false){
+        colors = ["white", "red", "blue", "green", "yellow", "orange", "purple", "black", "pink"];
+    }
+    else if(hard == false && blind == true){
+        colors = ["white", "blue", "yellow", "black", "orange", "pink", "purple"];
+    }
+    else{
+        colors = ["white", "red", "blue", "green", "yellow", "orange", "purple"];
+    }
+}
+
+//disables buttons after guess
 function disableButtons() {
     c1.disabled = true;
     c2.disabled = true;
@@ -43,6 +86,7 @@ function disableButtons() {
     guessButton.disabled = true;
 }
 
+//enables buttons after guess
 function enableButtons() {
     c1.disabled = false;
     c2.disabled = false;
@@ -51,19 +95,20 @@ function enableButtons() {
     guessButton.disabled = false;
 }
 
-function changeSets() {
-    parentNode = document.getElementById('colorSet' + cSet);
+//changes the set of color boxes and results
+function changeSets(value) {
+    parentNode = document.getElementById('colorSet' + value);
     c1 = parentNode.querySelector('#c1');
     c2 = parentNode.querySelector('#c2');
     c3 = parentNode.querySelector('#c3');
     c4 = parentNode.querySelector('#c4');
 
 
-    resultNode = document.getElementById('result' + cSet);
+    resultNode = document.getElementById('result' + value);
     r1 = resultNode.querySelector('#r1');
     r2 = resultNode.querySelector('#r2');
     r3 = resultNode.querySelector('#r3');
-    guessButton = resultNode.querySelector('#guess' + cSet);
+    guessButton = resultNode.querySelector('#guess' + value);
 }
 
 function createCombo() {
@@ -71,14 +116,14 @@ function createCombo() {
     if (easy == false) {
         //create answer combination
         while (i < 4) {
-            answer[i] = colors[Math.floor(Math.random() * colors.length)];
+            answer[i] = colors[Math.floor(Math.random() * colors.length) + 1];
             i++;
         }
     }
     //avoid duplicates
     else {
         while (i < 4) {
-            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            var randomColor = colors[Math.floor(Math.random() * colors.length) + 1];
             if (!(answer.includes(randomColor))) {
                 answer[i] = randomColor;
                 i++;
@@ -87,14 +132,19 @@ function createCombo() {
     }
 }
 
-function clearGuessResults() {
+//clears a color and text box
+function clearPreviousGuessResults() {
     r1.textContent = '';
     r2.textContent = '';
     r3.textContent = '';
+
+    c1.style.backgroundColor = 'rgb(209, 217, 221)';
+    c2.style.backgroundColor = 'rgb(209, 217, 221)';
+    c3.style.backgroundColor = 'rgb(209, 217, 221)';
+    c4.style.backgroundColor = 'rgb(209, 217, 221)';
 }
 
-
-// Currently working
+// resets to a new game
 function newGame() {
 
     //sets buttons back to default settings
@@ -102,19 +152,14 @@ function newGame() {
 
         disableButtons();
 
-        c1.style.backgroundColor = 'rgb(209, 217, 221)';
-        c2.style.backgroundColor = 'rgb(209, 217, 221)';
-        c3.style.backgroundColor = 'rgb(209, 217, 221)';
-        c4.style.backgroundColor = 'rgb(209, 217, 221)';
+        clearPreviousGuessResults();
 
         cSet--;
 
-        changeSets();
-
-        clearGuessResults();
+        changeSets(cSet);
     }
 
-
+    clearPreviousGuessResults();
     enableButtons();
 
     //create new answer combination
@@ -155,7 +200,7 @@ function changeColor() {
     var boxColor = this.style.backgroundColor;
     var colorIndex = colors.indexOf(boxColor);
 
-    if (colorIndex != 5) {
+    if (colorIndex != colors.length - 1) {
         this.style.backgroundColor = colors[colorIndex + 1];
     }
     else {
@@ -227,7 +272,6 @@ function guess() {
         newGameButton.style.display = 'flex';
         guessButton.style.display = 'none';
         return; //avoids it continuing (hopefully)
-        alert("You win test!");
     }
 
     //check if max number of guesses has been reached
@@ -244,8 +288,15 @@ function guess() {
     r3.textContent = incorrect;
 
     cSet++;
+    //limit view of guesses if hard mode is active
+    if(hard == true && cSet >= 4){
+        changeSets(cSet - 3);
+        disableButtons();
+        clearPreviousGuessResults();
+    }
+
     //enable the next set of buttons for next cSet
-    changeSets();
+    changeSets(cSet);
 
     //set color boxes as colors[0] ('red')
     c1.style.backgroundColor = colors[0];
