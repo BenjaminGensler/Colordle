@@ -1,3 +1,24 @@
+const popupButton = document.getElementById('popupButton');
+const popupModal = document.getElementById('popupModal');
+const closeModal = document.getElementById('closeModal');
+
+// Open the modal
+popupButton.addEventListener('click', () => {
+    popupModal.style.display = 'block';
+});
+
+// Close the modal
+closeModal.addEventListener('click', () => {
+    popupModal.style.display = 'none';
+});
+
+// Close the modal when clicking outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === popupModal) {
+        popupModal.style.display = 'none';
+    }
+});
+
 let colors = ["white", "red", "blue", "green", "yellow", "orange", "purple"];
 var answer = new Array();
 var guesses = new Array(); //may not need this

@@ -14,63 +14,59 @@
         <ul class="tabs">
             <li>
                 <p>Colordle</p>
+                <img class="logo" src="logo.png"></li>
             </li>
-            <li><img class="logo" src="logo.png"></li>
+            <li>
+            <li>
+                <a href="wordMaster.html" class="wordMasterLink">WordMaster</a>
+            </li>
+            <li>
+                <button class="popupButton" id="popupButton">Open Settings/How to Play</button>
+            </li>
         </ul>
     </nav>
+    
+    <!-- Modal Structure -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+                <summary><b>How To Play</b><span class="arrow"></span></summary>
+                <p> - Click on the colors to change the color</p>
+                <p> - Create a color combination and press "Guess"</p>
+                <p> - Your guess will tell you about your combination:</p>
+                <p> <img class="type" src="correctType.png"> you have the <b>right</b> color in the <b>right</b> spot</p>
+                <p> <img class="type" src="misplacedType.png"> you have the <b>right</b> color in the <b>wrong</b> spot</p>
+                <p> <img class="type" src="wrongType.png"> you have the <b>wrong</b> color</p> <br>
+                <p> - Keep guessing until you get the right combination</p>
+                <p> - You have 10 tries to get the right combination</p>
+                <p> - If you don't want to always guess 4 colors you can use a white tile as a blank</p>
+                <p> **Note: <br> There can be duplicate colors. If there is a duplicate color the guess will not include it in the results.</p>
+                <summary><b>Settings</b><span class="arrow"></span></summary>
+                <div class="mixer">
+                    <p>Easy Mode</p>
+                    <label class="switch">
+                        <input type="checkbox" onchange="easyMode()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="mixer">
+                    <p>Hard Mode</p>
+                    <label class="switch">
+                        <input type="checkbox" onchange="hardMode()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="mixer">
+                    <p>Color Blind</p>
+                    <label class="switch">
+                        <input type="checkbox" onchange="colorBlindMode()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+        </div>
+    </div>
     <section class="primary">
-        </button>
         <div class="base">
-            <div class="sec-piece2">
-                <button class="newGame" id="newGame" onClick='newGame()'>
-                    <p>New Game</p>
-                </button>
-                <details class="dropdown">
-                    <summary><b>How To Play</b><span class="arrow"></span></summary>
-
-                    <p> - Click on the colors to change the color</p>
-                    <p> - Create a color combination and press "Guess"</p>
-                    <p> - Your guess will tell you about yoru combination:</p>
-                    <p> <img class="type" src="correctType.png"> you have the <b>right</b> color in the <b>right</b>
-                        spot</p>
-                    <p> <img class="type" src="misplacedType.png"> you have the <b>right</b> color in the <b>wrong</b>
-                        spot</p>
-                    <p> <img class="type" src="wrongType.png"> you have the <b>wrong</b> color</p> <br>
-                    <p> - Keep guessing until you get the right combination</p>
-                    <p> - You have 10 tries to get the right combination</p>
-                    <p> - If you don't want to always guess 4 colors you can use a white tile as a blank</p>
-                    <p> **Note: <br> There can be duplicate colors. If there is a duplicate color the guess will not
-                        include it in the results.</p>
-                </details>
-
-                <details class="dropdown">
-                    <summary><b>Settings</b><span class="arrow"></span></summary>
-                    <div class="mixer">
-                        <p>Easy Mode</p>
-                        <label class="switch">
-                            <input type="checkbox" onchange="easyMode()">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div class="mixer">
-                        <p>Hard Mode</p>
-                        <label class="switch">
-                            <input type="checkbox" onchange="hardMode()">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div class="mixer">
-                        <p>Color Blind</p>
-                        <label class="switch">
-                            <input type="checkbox" onchange="colorBlindMode()">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </details>
-            </div>
-
             <div class=sec-piece2>
                 <div class=mixer>
                     <div class="guessBox">
