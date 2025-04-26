@@ -134,18 +134,19 @@ function changeSets(value) {
 
 function createCombo() {
     var i = 0;
+    const validColors = colors.filter(color => color && color.toLowerCase() !== "white"); // Filter out "white" and blanks
+
     if (easy == false) {
-        //create answer combination
+        // Create answer combination without avoiding duplicates
         while (i < 4) {
-            answer[i] = colors[Math.floor(Math.random() * colors.length) + 1];
+            answer[i] = validColors[Math.floor(Math.random() * validColors.length)];
             i++;
         }
-    }
-    //avoid duplicates
-    else {
+    } else {
+        // Create answer combination while avoiding duplicates
         while (i < 4) {
-            var randomColor = colors[Math.floor(Math.random() * colors.length) + 1];
-            if (!(answer.includes(randomColor))) {
+            var randomColor = validColors[Math.floor(Math.random() * validColors.length)];
+            if (!answer.includes(randomColor)) {
                 answer[i] = randomColor;
                 i++;
             }
